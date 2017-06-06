@@ -37,3 +37,6 @@ attach-to-docker:
 
 test: env/bin/python
 	env/bin/py.test --cov=hermes hermes_test -vv
+
+requirements.txt:
+	pip freeze -r requirements.txt | tee requirements.txt
