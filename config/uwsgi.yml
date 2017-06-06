@@ -1,0 +1,7 @@
+uwsgi:
+  socket: /app/hermes.sock
+  chmod-socket: 666
+  module: hermes.app
+  enable-threads: true
+  workers: 8
+  virtualenv: env/
