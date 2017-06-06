@@ -1,4 +1,4 @@
-FROM python:3.6
+FROM python:3.6.1
 MAINTAINER Allan Lewis <allanlewis99@gmail.com>
 
 # Install the needed packages
