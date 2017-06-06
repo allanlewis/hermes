@@ -12,7 +12,7 @@ RUN apt-get update && \
 RUN mkdir /app && \
     rm -rf /app/.git && \
     rm -rf /app/.idea
-RUN pip install virtualenv
+RUN pip install virtualenv==15.1.0
 COPY . /app
 RUN cd /app && \
     make clean && \
