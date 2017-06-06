@@ -22,14 +22,14 @@ start: env/bin/python
 	env/bin/uwsgi --yaml=config/uwsgi.yml
 
 build-docker:
-	docker build -t https://dockerreg.dev.youview.co.uk:5000/alewis/hermes:latest .
+	docker build -t dockerreg.dev.youview.co.uk:5000/alewis/hermes:latest .
 
 build-and-push: build-docker
-	docker push https://dockerreg.dev.youview.co.uk:5000/alewis/hermes:latest
+	docker push dockerreg.dev.youview.co.uk:5000/alewis/hermes:latest
 
 start-docker:
 	docker rm hermes || true
-	docker run --name "hermes" -p "127.0.0.1:8080:8080" https://dockerreg.dev.youview.co.uk:5000/alewis/hermes:latest
+	docker run --name "hermes" -p "127.0.0.1:8080:8080" dockerreg.dev.youview.co.uk:5000/alewis/hermes:latest
 
 attach-to-docker:
 	docker exec -i -t hermes /bin/bashupdate-all-packages: env/bin/python
