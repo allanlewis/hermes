@@ -32,8 +32,8 @@ start-docker:
 	docker run --name "hermes" -p "127.0.0.1:8080:8080" https://dockerreg.dev.youview.co.uk:5000/alewis/hermes:latest
 
 attach-to-docker:
-	 docker exec -i -t hermes /bin/bashupdate-all-packages: env/bin/python
-	 env/bin/pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 env/bin/pip install -U
+	docker exec -i -t hermes /bin/bashupdate-all-packages: env/bin/python
+	env/bin/pip freeze --local | grep -v '^\-e' | cut -d = -f 1  | xargs -n1 env/bin/pip install -U
 
 test: env/bin/python
 	env/bin/py.test --cov=hermes hermes_test -vv
