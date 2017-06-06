@@ -2,20 +2,25 @@ FROM python:3.6
 MAINTAINER Allan Lewis <allanlewis99@gmail.com>
 
 # Install the needed packages
-RUN apt-get update
-RUN apt-get install -y supervisor nginx
+RUN apt-get update && \
+    apt-get install -y \
+        nginx \
+        supervisor \
+        ;
 
 # Copy and set up the app
-RUN mkdir /app
-RUN rm -rf /app/.git
-RUN rm -rf /app/.idea
+RUN mkdir /app && \
+    rm -rf /app/.git && \
+    rm -rf /app/.idea
 RUN pip install virtualenv
 COPY . /app
-RUN cd /app && make clean && make
+RUN cd /app && \
+    make clean && \
+    make
 
 # Configure nginx
 RUN mv /app/config/nginx.conf /etc/nginx/sites-available/default
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf 
+RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 
 # Configure supervisor
 RUN mv /app/config/supervisor.conf /etc/supervisor/conf.d/
